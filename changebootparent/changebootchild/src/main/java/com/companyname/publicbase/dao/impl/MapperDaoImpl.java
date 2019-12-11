@@ -2,6 +2,7 @@ package com.companyname.publicbase.dao.impl;
 
 import com.companyname.publicbase.dao.MapperDao;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -75,6 +76,7 @@ public class MapperDaoImpl implements MapperDao {
 		PageHelper.startPage(limit, offset);
 		//List list = this.getSqlSession().selectList(statement, ob,new RowBounds(limit, offset));
 		List list = sqlSessionTemplate.selectList(statement, ob);
+		PageInfo page = new PageInfo(list);
 		return list;
 	}
 
