@@ -1,0 +1,209 @@
+html,body {
+	height: 100%;
+	font-family:"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+}
+.t {
+    height: 1px;
+    line-height: 90px;
+    background-color: #6ad1ff;
+}
+
+.box {
+	/* filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6699FF', endColorstr='#6699FF');  IE
+	background-image:linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
+	background-image:-o-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
+	background-image:-moz-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
+	background-image:-webkit-linear-gradient(bottom, #6699FF 0%, #6699FF 100%);
+	background-image:-ms-linear-gradient(bottom, #6699FF 0%, #6699FF 100%) */;
+	/* background-color:#0db5ff; */
+	margin: 0 auto;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.logo {
+	
+	background-size:100% 100%;
+	width:170px;
+	height:73px;
+	left:300px;
+	top:300px;
+	position:absolute;
+}
+.bottom {
+	
+	background-size:100% 100%;
+	width:100%;
+	height:40px;
+	bottom:0px;
+	position:absolute;
+}
+.title {
+	left:300px;
+	top:380px;
+	position:absolute;
+}
+.login-box {
+	width: 100%;
+	max-width:500px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	margin-left: -200px;
+	margin-top: -200px;
+	/*设置负值，为要定位子盒子的一半高度*/
+	
+}
+@media screen and (min-width:500px){
+	.login-box {
+		left: 50%;
+		/*设置负值，为要定位子盒子的一半宽度*/
+		margin-left: -250px;
+	}
+}	
+
+.form {
+	width: 100%;
+	max-width:500px;
+	height: 275px;
+	margin: 25px auto 0px auto;
+	padding-top: 25px;
+}	
+.login-content {
+	height: 350px;
+	width: 100%;
+	max-width:500px;
+	background-color: rgba(255, 250, 2550, .6);
+	float: left;
+}		
+	
+	
+.input-group {
+	margin: 0px 0px 30px 0px !important;
+}
+.form-control,
+.input-group {
+	height: 40px;
+}
+
+.form-control-error{
+	height: 40px;
+	background-color:#FFC1C1;
+}
+
+.form-group {
+	margin-bottom: 0px !important;
+}
+.login-title {
+	padding: 20px 10px;
+	background-color: rgba(0, 0, 0, .6);
+}
+.login-title h1 {
+	margin-top: 10px !important;
+}
+.login-title small {
+	color: #fff;
+}
+
+.link p {
+	line-height: 20px;
+	margin-top: 30px;
+}
+.btn-sm {
+	padding: 8px 24px !important;
+	font-size: 16px !important;
+}
+
+.desktop-top {
+	height: 50px; 
+    background:url(../img/top-bg.png); 
+    filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+    -moz-background-size:100% 100%;
+    background-size:100% 100%;  
+}
+.desktop-bottom {
+	height: 50px; 
+	/* border:1px solid #00f; */
+}
+.desktop-middle {
+	height:95%; 
+	/* border:1px solid #0f0; */ 
+	position: relative;
+}
+.desktop-left {
+	height: 100%; 
+	width:250px; 
+	/* border:1px solid #000;  */
+	position: absolute; 
+	left: 0px; 
+	top: 0px;
+}
+.desktop-right {
+	height: 100%; 
+	right:0px; 
+	/* border:1px solid #ff0;  */
+	position: absolute; 
+	left: 250px; 
+	top: 0px;
+}
+
+
+
+/* yinlixin */
+.desktop-up {
+	height: 20%; 
+	width:100%; 
+	/* border:1px solid #000;  */
+	position: absolute; 
+	left: 0px; 
+	top: 0px;
+	
+}
+/* yinlixin */
+.desktop-down {
+	height: 80%; 
+	width:100%;
+	/* border:1px solid #ff0;  */
+	position: absolute; 
+	left: 0px; 
+	bottom:0px;
+}
+
+
+.page-head {
+	height: 38px; 
+	width:100%;
+	background-color: #CCCCCC;
+}
+.page-main {
+	margin: 5px 5px 5
+}
+
+.content {  
+	background:rgba(255, 255, 255, 0.6)!important;
+	filter:Alpha(opacity=60); 
+	background:#fff; /*　使用IE专属滤镜实现IE背景透明*/ 
+}
+
+.login-box-all {
+   // background-color: #fff;
+    width: 300px;
+    height: 260px;
+    border-radius: 10px;
+    position: absolute;
+    left: 43%;
+    top: 30%;
+}
+
+.login-box-user {
+    width: 200px;
+    height: 30px;
+    position: relative;
+    left: 50px;
+    top: 50px;
+    background-color: #0db5ff;
+    border-radius: 5px;
+}
+label.error {
+  		color: #EA5200;
+}

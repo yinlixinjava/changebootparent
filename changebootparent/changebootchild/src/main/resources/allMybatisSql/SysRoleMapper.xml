@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.companyname.userRoleFunction.bean.SysRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.companyname.userRoleFunction.bean.SysRole" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="operatetime" property="operatetime" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="TINYINT" />
+  </resultMap>
+ 
+ 
+ 
+ <select id="findRole" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    	<include refid="Base_Column_List" />
+    from sys_role where flag = 1
+  </select>
+  
+  
+  
+  
+  
+  <select id="findRoleByUserId" resultType="java.lang.Integer" parameterType="Map" >
+    SELECT DISTINCT(role.id) as roleid FROM sys_user myuser, sys_user_role userrole, sys_role role
+	WHERE myuser.id = userrole.user_id
+	AND userrole.role_id = role.id
+	AND myuser.id = #{id }
+	AND myuser.flag = 1
+	AND role.flag = 1
+  </select>
+ 
+ 
+ 
+ <!-- 将role的状态改为0 就代表删除了 -->
+  <update id="sysRoleDelete" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    	update sys_role set flag = #{flag,jdbcType=TINYINT}, operatetime = #{operatetime,jdbcType=VARCHAR} where id = #{id,jdbcType=INTEGER} and flag = 1
+  </update>
+ 
+ 
+ 
+ 	<!-- 新增role yinlixin-->
+   <insert id="addRole" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="operatetime != null" >
+        operatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="operatetime != null" >
+        #{operatetime,jdbcType=VARCHAR},
+      </if>
+      
+    </trim>
+  </insert>
+ 
+ 
+<!--  修改role  yinlixin -->
+ <update id="updateRole" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    update sys_role
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="operatetime != null" >
+        operatetime = #{operatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <select id="findRoleByid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where id = #{id,jdbcType=INTEGER} and sys_role.flag = 1
+  </select>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  <sql id="Base_Column_List" >
+    id, name, code, description, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    insert into sys_role (id, name, code, 
+      description, flag)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{flag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    update sys_role
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.companyname.userRoleFunction.bean.SysRole" >
+    update sys_role
+    set name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

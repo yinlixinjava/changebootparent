@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.companyname.userRoleFunction.bean.SysFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.companyname.userRoleFunction.bean.SysFunction" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="page" property="page" jdbcType="VARCHAR" />
+    <result column="zindex" property="zindex" jdbcType="INTEGER" />
+    <result column="flag" property="flag" jdbcType="TINYINT" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="minpid" property="minpid"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pid, name, code, page, zindex, flag, description
+  </sql>
+  
+  
+  	<!--通过登录名查找 目录列表-->
+	<select id="findrolemenu" resultMap="BaseResultMap" parameterType="java.lang.String">
+		<!-- select f.id, f.pid, f.name, f.code, f.page, f.zindex, f.flag, f.description, MIN(f.pid) as minpid
+		from sys_user u, sys_user_role ur, sys_role r, sys_role_function rf, sys_function f
+		where u.id = ur.user_id
+		and ur.role_id = r.id
+		and r.id = rf.role_id
+		and rf.function_id = f.id
+		and u.flag = 1
+		and r.flag = 1
+		and f.flag = 1
+		and u.username = #{username} -->
+		
+		select f.id, f.pid, f.name, f.code, f.page, f.zindex, f.flag, f.description, (select MIN(sys_function.pid) from sys_function) as minpid
+		from sys_user u, sys_user_role ur, sys_role r, sys_role_function rf, sys_function f
+		where u.id = ur.user_id
+		and ur.role_id = r.id
+		and r.id = rf.role_id
+		and rf.function_id = f.id
+		and u.flag = 1
+		and r.flag = 1
+		and f.flag = 1
+		and u.username = #{username}
+	</select>
+  
+  
+  <!--通过登录名查找 目录列表 yinlixin-->
+	<select id="findAllFunction" resultMap="BaseResultMap">
+		select 
+    		<include refid="Base_Column_List" />
+    	from sys_function
+    	where sys_function.flag = 1
+	</select>
+  
+  
+  
+  <!-- 修改是跳转页面专用的方法 -->
+  <select id="toUpdatePage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_function
+    where id = #{id,jdbcType=INTEGER} 
+  </select>
+  
+  
+  
+  <!-- name或url有相同的时给ajax提示 -->
+  <select id="countFunction" resultType="Map" parameterType="Map" >
+    select count(1) as countNum from sys_function 
+    where sys_function.name = #{name}
+  </select>
+  
+ <!--  根据id修改 -->
+ <update id="updateFunction" parameterType="com.companyname.userRoleFunction.bean.SysFunction" >
+    update sys_function
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        page = #{page,jdbcType=VARCHAR},
+      </if>
+      <if test="zindex != null" >
+        zindex = #{zindex,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetime != null" >
+        operatetime = #{operatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  <select id="isHaschild" resultType="Map" parameterType="Map" >
+    select count(1) as countNum from sys_function where pid = #{id,jdbcType=INTEGER} and flag = 1
+  </select>
+  
+  
+  
+ <!--  根据id修改 -->
+ <update id="deleteFunctionById" parameterType="Map" >
+        update sys_function
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        page = #{page,jdbcType=VARCHAR},
+      </if>
+      <if test="zindex != null" >
+        zindex = #{zindex,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetime != null" >
+        operatetime = #{operatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+    and flag = 1
+  </update>
+  
+  
+  
+  
+  <insert id="addFunction" parameterType="com.companyname.userRoleFunction.bean.SysFunction" >
+    insert into sys_function (id, pid, name, code, page, zindex, flag, description, operatetime)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{page,jdbcType=VARCHAR}, #{zindex,jdbcType=INTEGER}, 
+      #{flag,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{operatetime,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_function
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.companyname.userRoleFunction.bean.SysFunction" >
+    insert into sys_function (id, pid, name, 
+      code, page, zindex, 
+      flag, description)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{page,jdbcType=VARCHAR}, #{zindex,jdbcType=INTEGER}, 
+      #{flag,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.companyname.userRoleFunction.bean.SysFunction" >
+    insert into sys_function
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="page != null" >
+        page,
+      </if>
+      <if test="zindex != null" >
+        zindex,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="page != null" >
+        #{page,jdbcType=VARCHAR},
+      </if>
+      <if test="zindex != null" >
+        #{zindex,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=TINYINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.companyname.userRoleFunction.bean.SysFunction" >
+    update sys_function
+    set pid = #{pid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      page = #{page,jdbcType=VARCHAR},
+      zindex = #{zindex,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

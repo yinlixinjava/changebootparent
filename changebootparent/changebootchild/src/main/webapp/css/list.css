@@ -1,0 +1,222 @@
+body{
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	overflow:	auto;
+}
+
+table {
+	border-collapse: collapse;
+}
+th {
+	background:	none repeat	scroll 0 0 #EEEEEE;
+	border:	1px	solid #DEDEDE;
+	color: #484848;
+	font-size: 12px;
+	text-align:	center;
+	padding: 6px;
+}
+th.title {
+	border-color: #DEDEDE;
+	border-style: solid	dotted solid solid;
+	border-width: 1px;
+	color: #484848;
+	font-size: 14px;
+	text-align:	center;
+	width: 10%;
+	border:	1px	solid #DEDEDE;
+}
+td {
+	border:	1px	#DEDEDE	solid;
+	line-height: 22px;
+	padding: 3px 6px 3px 6px;
+	font-size: 12px;
+}
+th.sno,	td.sno {
+	width: 26px;
+}
+th.chbox {
+	width: 21px;
+}
+td.sno {
+	text-align:	center;
+}
+tr.odd {
+	background:	none repeat	scroll 0 0 #FFFFFF;
+}
+tr.even	{
+	background:	none repeat	scroll 0 0 #e6f6e6;
+}
+table.tabletab{
+	border:0;
+}
+td.noborder {
+	border:	0px	;
+	line-height: 18px;
+	padding: 3px 0px 0px 0px;
+}
+td.biankuang {
+	background-color: #96CAE7;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-top-color: #A0C3DF;
+	border-right-color: #A0C3DF;
+	line-height: 18px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #A0C3DF;
+	border-bottom-width: 0px;
+	font-size:14px;
+	width: auto;
+}
+
+input.button2 {/* ���еİ�ť */
+	width: 80px;
+	height:	26px;
+}
+td.button {/* ���еİ�ť����TD */
+	background: #EEEEEE;
+	line-height: 30px;
+}
+
+a {
+	font-size: 12px;
+	text-decoration: none;
+	color: blue;
+}
+a.button, a.visited	{
+	width: 100px;
+	height:	26px;
+	display: inline-block;
+	background:	#F1F1F1;
+	border-color: white	#c6c6c6	#c6c6c6	white;
+	border-style: solid;
+	border-width: 1px;
+	line-height: 26px;
+	font-weight: 700;
+	text-align:	center;
+}
+a.button {
+	color: #333333;
+}
+a.button:hover {
+	background:	#aaF1aa;
+}
+a.button:active	{
+	background:	#F1F1F1;
+	border-color: #c6c6c6 white	white #c6c6c6;
+}
+
+div.buttonContainer, div.listTitle,	div.buttons	{
+	height:	30px;
+	line-height: 30px;
+	border:	0px	dashed #c6c6c6;
+}
+
+div.buttonContainer	{
+	background:	#FFFFFF;
+	position:relative;
+}
+div.listTitle {
+	float: left;
+	margin:	3px;
+	margin-left:0px; 
+	margin-bottom: 0px;
+	padding: 0px;
+	font-size: 14px;
+	background-color: #96CAE7;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-top-color: #A0C3DF;
+	border-right-color: #A0C3DF;
+	height: 26px;
+	width: 130px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #A0C3DF;
+}   
+div.buttons	{
+	float: right;
+	margin:	3px;
+	padding: 0px;
+}
+
+.CheckTriggerx {
+	background-image: url(../img/brcy_06.jpg);
+	height: 24px; 
+	width:80px;
+	padding-top: 4px;
+	font-size:14px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #009900;
+	border-right-color: #009900;
+	border-bottom-color: #009900;
+	border-left-color: #009900;
+	background-repeat: repeat-x;
+	cursor:hand;
+	color: #000;
+	width: auto;
+	font-weight: normal;
+}
+div.clear, table.clear	{
+	clear: both;
+	height:	0px;
+	padding: 0px;
+	text-align:center;
+	
+}
+
+/* pagination [start] */
+div.paginationContainer	{
+	border: 0px dashed blue;
+	margin: 3px 0px 3px 0px;
+	padding: 3px 0px 3px 0px;
+	text-align: center;
+	font-size: 12px;
+	vertical-align: bottom;
+}
+label.pageNumber {
+	font-size: 14px;
+	text-align: center;
+}
+label.onPage, label.offPage	{
+	margin:  3px 3px 3px 3px;
+	padding: 3px 8px 3px 8px;
+	width: 80px;
+	height: 20px;
+	font-size: 12px;
+}
+label.onPage {
+	color: blue;
+	cursor: pointer;
+	border: 1px solid	blue;
+}
+label.offPage {
+	color: #888888;
+	border: 1px solid #888888;
+}
+
+
+.listTitle {
+	background:	#EEEEEE;
+	border-color: #DEDEDE;
+	border-style: solid	dotted solid solid;
+	border-width: 1px;
+	color: #484848;
+	font-size: 14px;
+	text-align:	center;
+	width: 10%;
+	border:	1px	solid #DEDEDE;
+}
+
+/* pagination [	end	] */

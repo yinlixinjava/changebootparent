@@ -1,0 +1,59 @@
+
+.GridView {
+	font-size:9pt;
+}
+
+.GridHead td {
+	padding-left: 3px;
+	background-color:#ECEEF5;/**you can change the header BG here*/
+	font-weight:bold;
+	text-align:center;
+	color: #484848;
+	font-size: 12px;
+}
+
+.GridHead a {
+	color: white;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.GridHead a:hover{
+	color: white;
+}
+
+.GridHighLightRow td {/*dafult name*/
+	background-color: #F3F8FC;
+	cursor:default;
+}
+
+.GRIDTREESTYLE{
+	font-size:9pt;
+}
+
+.GRIDTREESTYLE a{
+	white-space: nowrap;
+	color: #0000FF;
+	text-decoration: none;
+}
+
+.GRIDTREESTYLE a:hover{
+	background-color: #F7F7F7;
+	text-decoration: underline;
+}
+
+.GRIDTREESTYLE a.nodeSel{
+	background-color: #F7F7F7;
+}
+.gridtHeight {
+	background-color: #FFFFFF;
+	cursor:default;
+}
+.gridtHeightTd {
+	text-align:center;
+	font-size: 12px;
+}
+.gridtHeightTdLeft {
+	text-align:left;
+	font-size: 12px;
+}
